@@ -6,7 +6,7 @@ Classic Cakes es una tienda (e-commerce) para la venta de productos de pasteler�
 Mapa del sitio
 
 - Filtro por categoría: configurable
-- Vistas de todos los productos y por categoria:Información básica y foto.
+- Vistas de todos los productos y por categoria: Información básica y foto.
 - Vista detallada: Detalles de producto extendida y cantidad.
 
 ## Instalación
