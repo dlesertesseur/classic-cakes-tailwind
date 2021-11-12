@@ -38,6 +38,7 @@ Mapa del sitio
  - heroicons/react
 
 
+
 ## Demo
 
 ![classic cakes](https://github.com/dlesertesseur/classic-cakes-tailwind/blob/master/doc/classic_cakes.gif)
