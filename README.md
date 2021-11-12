@@ -40,7 +40,7 @@ Mapa del sitio
 
 ## Demo
 
-![](https://github.com/dlesertesseur/classic-cakes-tailwind/tree/master/doc/classic_cakes.gif)
+![classic cakes](https://github.com/dlesertesseur/classic-cakes-tailwind/blob/master/doc/classic_cakes.gif)
 
 ### Autor
 
