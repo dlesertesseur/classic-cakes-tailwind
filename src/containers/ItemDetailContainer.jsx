@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router";
+import { Redirect, useParams } from "react-router";
 import ItemDetail from "../components/ItemDetail.jsx";
 import { getProductList } from "../Data.js";
 
 const ItemDetailContainer = () => {
   //Parametro
-  const {id} = useParams('id');
-  
-   //Estado
+  const { id } = useParams("id");
+
+  //Estado
   const [item, setItem] = useState([]);
 
   //Se ejecuta al inicio para cargar los items
   useEffect(() => {
-
     const obtenerItem = new Promise((resolve, reject) => {
       setTimeout(function () {
         resolve(getProductList());
@@ -21,8 +20,8 @@ const ItemDetailContainer = () => {
 
     obtenerItem.then((result) => {
       const it = result.find((item) => {
-        return(item.id === id)
-      })
+        return item.id === id;
+      });
 
       setItem(it);
     });
@@ -30,7 +29,12 @@ const ItemDetailContainer = () => {
 
   return (
     <div>
-      <ItemDetail item={item}/>
+      {item===undefined ? (
+        <Redirect to="/404"/>
+      ):(
+        <ItemDetail item={item} />
+      )}
+
     </div>
   );
 };

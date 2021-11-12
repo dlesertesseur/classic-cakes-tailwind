@@ -1,6 +1,6 @@
 import React from "react";
 
-const Counter = (props) => {
+const ItemCounter = (props) => {
 
     const {cant, setCant} = props;
 
@@ -57,4 +57,4 @@ const Counter = (props) => {
   );
 };
 
-export default Counter;
+export default ItemCounter;
