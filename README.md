@@ -8,6 +8,7 @@ Mapa del sitio
 - Filtro por categoría: configurable
 - Vistas de todos los productos y por categoria: Información básica y foto.
 - Vista detallada: Detalles de producto extendida y cantidad.
+- Vista carro de compras: Detalle de productos, selector de cantidad, opcion para eliminar item y total a pagar.
 
 ## Instalación
 
@@ -36,6 +37,7 @@ Mapa del sitio
  - Tailwind CSS. (estilos)
  - React Router Dom (navegacion)
  - heroicons/react
+ - firebase
 
 
 

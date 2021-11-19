@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import ItemList from "../components/ItemList.jsx";
-
-import { getProductList } from "../Data.js";
+import { collection, query, getDocs, orderBy, where } from "firebase/firestore";
+import { getFirestoreDb } from "../lib/firebaseConfig";
 
 const ItemListContainer = () => {
   const styles = {
@@ -20,34 +20,44 @@ const ItemListContainer = () => {
   const [loaded, setLoaded] = useState(false);
 
   //Parametro
-  const {id} = useParams('id');
+  const { id } = useParams("id");
 
   //Se ejecuta al inicio para cargar los items
-  useEffect(() => {
-    const obtenerProductos = new Promise((resolve, reject) => {
-      setLoaded(false);
-      setTimeout(function () {
-        resolve(getProductList());
-      }, 2000);
-    });
 
-    obtenerProductos.then((result) => {
-      if(id != null){
-        const filtered = result?.filter(item => {
-          return(item.category === id)
-        });
-        setProducts(filtered);
+  useEffect(() => {
+    const db = getFirestoreDb();
+
+    const getProductsDB = async () =>{
+      let queryCollection = null;
+      setLoaded(false);
+      if (id !== undefined) {
+        queryCollection = query(
+          collection(db, "products"),
+          where("category", "==", id)
+        );
+      } else {
+        /*Agrega el where*/
+        queryCollection = query(collection(db, "products"), orderBy("title"));
       }
-      else{
-        setProducts(result);
-      }
+
+      const querySnapshot = await getDocs(queryCollection);
+      const aux = [];
+
+      querySnapshot.forEach((doc) => {
+        aux.push(doc.data());
+      });
+
+      setProducts(aux);
       setLoaded(true);
-    });
+    };
+
+    getProductsDB();
+    
   }, [id]);
 
   return (
     <div style={styles}>
-      <ItemList loaded = {loaded} products={products} />
+      <ItemList loaded={loaded} products={products} />
     </div>
   );
 };

@@ -5,18 +5,18 @@ import NavBar from "./components/NavBar.jsx";
 import ItemListContainer from "./containers/ItemListContainer.jsx";
 import ItemDetailContainer from "./containers/ItemDetailContainer";
 import ContactPage from "./pages/ContactPage.jsx";
-import CartPage from "./pages/CartPage";
+import Cart from "./pages/Cart";
 import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   return (
-    <div className="flex-auto">
+    <div className="flex flex-row">
       <CartContextProvider>
         <BrowserRouter>
           <NavBar />
           <Switch>
             <Route exact path="/" component={ItemListContainer} />
-            <Route exact path="/cart" component={CartPage} />
+            <Route exact path="/cart" component={Cart} />
             <Route exact path="/contacto" component={ContactPage} />
             <Route exact path="/404" component={ErrorPage} />
             <Route path="/category/:id" component={ItemListContainer} />
