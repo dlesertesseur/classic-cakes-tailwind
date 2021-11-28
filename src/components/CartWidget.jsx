@@ -7,7 +7,7 @@ const CartWidget = () => {
 
   return (
     <>
-      {totalItems > 0 ? (
+      {totalItems() > 0 ? (
           <div className="flex items-center justify-end h-full mx-2">
             <Link to={"/cart"}>
               <svg
@@ -27,7 +27,7 @@ const CartWidget = () => {
             </Link>
             <div>
               <span className="text-xs px-2 font-medium bg-red-500 text-white rounded py-0.5">
-                {totalItems}
+                {totalItems()}
               </span>
             </div>
           </div>

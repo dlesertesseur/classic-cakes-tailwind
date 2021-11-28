@@ -10,6 +10,7 @@ Mapa del sitio
 - Vista detallada: Detalles de producto extendida y cantidad.
 - Vista carro de compras: Detalle de productos, selector de cantidad, opcion para eliminar item y total a pagar.
 
+
 ## Instalación
 
 1. Clonar repositorio
@@ -37,6 +38,7 @@ Mapa del sitio
  - Tailwind CSS. (estilos)
  - React Router Dom (navegacion)
  - heroicons/react
+ - sweetalert2
  - firebase
 
 

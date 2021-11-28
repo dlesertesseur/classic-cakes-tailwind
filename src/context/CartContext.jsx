@@ -6,8 +6,6 @@ const CartContext = React.createContext({});
 function CartContextProvider({ children }) {
   //Estado
   const [products, setProducts] = useState([]);
-  const [totalItems, setTotalItems] = useState(0);
-  const [totalToPay, setTotalToPay] = useState(0);
 
   // agregar cierta cantidad de un ítem al carrito
   function addItem(item, quantity) {
@@ -29,9 +27,6 @@ function CartContextProvider({ children }) {
         reg.quantity += quantity;
         setProducts([...products]);
       }
-
-      setTotalItems(totalItems + quantity);
-      setTotalToPay(totalToPay + (quantity * item.price))
     }
   }
 
@@ -47,58 +42,54 @@ function CartContextProvider({ children }) {
     return ret;
   }
 
-  // Remover un item del cart por usando su id
+  // Remover un item del cart por su id
   function removeItem(id) {
-
     let item = fingById(id);
 
-    if(item !== undefined) {
-
+    if (item !== undefined) {
       let filtered = products.filter(function (reg) {
         return reg.id !== id;
       });
-      
+
       setProducts(filtered);
-
-      /*Cantidad de items*/
-      setTotalItems(totalItems - item.quantity);
-
-      /*Calcula el total a pagar*/
-      let toPay = 0;
-      for (item of filtered) {
-        toPay += (item.quantity * item.price);
-      }
-
-      setTotalToPay(toPay);
     }
   }
 
   // Remover todos los items
   function clear() {
     setProducts([]);
-    setTotalItems(0);
-    setTotalToPay(0);
   }
 
-  // Remover todos los items
+  // Actualiza la cantidad del item
   function updateItemCant(id, quantity) {
     let reg = fingById(id);
 
     if (reg !== undefined) {
-      let total = 0;
-      let toPay = 0;
-      let item;
-
       reg.quantity = quantity;
 
-      for (item of products) {
-        total += item.quantity;
-        toPay += (item.quantity * item.price);
-      }
-
-      setTotalItems(total);
-      setTotalToPay(toPay);
+      /*Actualiza el estado*/
+      setProducts([...products])
     }
+  }
+
+  function totalToPay() {
+    let toPay = 0;
+    let item = null;
+    for (item of products) {
+      toPay += item.quantity * item.price;
+    }
+    return toPay;
+  }
+
+  function totalItems() {
+    let item = null;
+    let total = 0;
+
+    for (item of products) {
+      total += item.quantity;
+    }
+
+    return total;
   }
 
   return (
