@@ -10,7 +10,11 @@ const Menu = (props) => {
     setDrop(!drop);
   };
 
-  const st = `absolute ${drop ? "" : "hidden"} text-gray-700 mt-2 ml-2`;
+  const st = `absolute ${drop ? "" : "hidden"} text-gray-700 mt-2 right-0 mr-2 md:ml-2`;
+
+  function closeMenu() {
+    setDrop(false);
+  }
 
   return (
     <div>
@@ -27,10 +31,6 @@ const Menu = (props) => {
 
       <ul className={st}>
         {items.map((item, idx) => {
-          function closeMenu() {
-            setDrop(false);
-          }
-
           return (
             <li key={idx}>
               <Link

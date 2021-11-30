@@ -33,7 +33,7 @@ const CartItem = (props) => {
               />
             )}
           </div>
-          <div className="h-48 w-40 sm:w-64 p-4 rounded-r-lg bg-gray-100 border-gray-200 border-2">
+          <div className="flex flex-col justify-between h-48 w-36 sm:w-64 p-4 rounded-r-lg bg-gray-100 border-gray-200 border-2">
             <div className="flex items-center text-xl te text-gray-800">
               {item.title}
             </div>
@@ -46,7 +46,7 @@ const CartItem = (props) => {
               <ItemCounter cant={cant} setCant={asignarCantidad} />
             </div>
 
-            <div className="flex items-end h-14 text-xs mt-2">
+            <div className="text-xs mt-2">
               <button
                 className="bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded inline-flex items-center"
                 onClick={eliminarItenDeCart}
